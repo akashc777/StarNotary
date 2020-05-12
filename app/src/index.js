@@ -44,14 +44,10 @@ const App = {
     const { lookUptokenIdToStarInfo } = this.meta.methods;
     const id = document.getElementById("lookid").value;
    
-    await lookUptokenIdToStarInfo.call(id, function(error, result){
-      if(!error) {
-        App.setStatus("Star Name is " + result);
-      }else{
-        console.log(error);
-        
-      }
-    });
+    let starName = await lookUptokenIdToStarInfo(id).call();
+   
+    App.setStatus("Star Name is " + starName);
+    
     
    
   }
